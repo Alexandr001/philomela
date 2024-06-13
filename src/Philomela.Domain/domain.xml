@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Philomela.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:Philomela.Domain.Entities.Authentication.IAuthenticationRepository">
+            <summary>
+                Репозиторий аутентификации.
+            </summary>
+        </member>
+        <member name="M:Philomela.Domain.Entities.Authentication.IAuthenticationRepository.FindAuthenticationModelByLoginAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+                Метод получения модели данных пользователя по логину. 
+            </summary>
+            <param name="login"> Логин пользователя. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+            <returns></returns>
+        </member>
+        <member name="P:Philomela.Domain.Entities.Authentication.UserCredential.Login">
+            <summary>
+                Уникальный логин пользователя.
+            </summary>
+        </member>
+        <member name="P:Philomela.Domain.Entities.Authentication.UserCredential.Password">
+            <summary>
+                Пароль (в бд храниться хешем).
+            </summary>
+        </member>
+        <member name="P:Philomela.Domain.Entities.Authentication.UserCredential.UserRole">
+            <summary>
+                Роль пользователя.
+            </summary>
+        </member>
+        <member name="M:Philomela.Domain.Entities.Authentication.UserCredential.GetHashSha256(System.String)">
+            <summary>
+                Метод хеширования пароля.
+            </summary>
+            <remarks> Метод хеширования SHA256. </remarks>
+            <param name="password"> Пароль. </param>
+            <returns> Захешированая строка. </returns>
+        </member>
+        <member name="T:Philomela.Domain.Entities.Philomela.IPhilomelaRepository">
+            <summary>
+                Репозиторий филомелы. :)
+            </summary>
+        </member>
+        <member name="M:Philomela.Domain.Entities.Philomela.IPhilomelaRepository.CreatePhilomelaAsync(Philomela.Domain.Entities.Philomela.Philomela,System.Threading.CancellationToken)">
+            <summary>
+                Создание птички.
+            </summary>
+            <param name="philomela"> Модель птички. </param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Philomela.Domain.Entities.Philomela.IPhilomelaRepository.UpdatePhilomelaAsync(Philomela.Domain.Entities.Philomela.Philomela,System.Threading.CancellationToken)">
+            <summary>
+                Обновление птички.
+            </summary>
+            <param name="philomela"> Модель птички. </param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Philomela.Domain.Entities.Philomela.IPhilomelaRepository.DeletePhilomelsAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Удаление птички по идентификатору.
+            </summary>
+            <param name="id"> Идентификатор птички. </param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="T:Philomela.Domain.Entities.User.IUserRepository">
+            <summary>
+                Репозиторий пользователя.
+            </summary>
+        </member>
+        <member name="M:Philomela.Domain.Entities.User.IUserRepository.CreateUserAsync(Philomela.Domain.Entities.User.User,System.Threading.CancellationToken)">
+            <summary>
+                Метод создания пользователя в бд.
+            </summary>
+            <param name="user"> Модель пользователя. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+        </member>
+        <member name="M:Philomela.Domain.Entities.User.IUserRepository.UpdateUserAsync(Philomela.Domain.Entities.User.User,System.Threading.CancellationToken)">
+            <summary>
+                Обновление пользователя в бд.
+            </summary>
+            <param name="user"> Модель пользователя. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+        </member>
+        <member name="M:Philomela.Domain.Entities.User.IUserRepository.DeleteUserByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Удаление пользователя по Id.
+            </summary>
+            <param name="id"> Id пользователя. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+        </member>
+        <member name="P:Philomela.Domain.Entities.User.User.Id">
+            <summary>
+                Уникальный идентификатор.
+            </summary>
+        </member>
+        <member name="P:Philomela.Domain.Entities.User.User.Name">
+            <summary>
+                Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:Philomela.Domain.Entities.User.User.LoginUserCredential">
+            <summary>
+                Логин пользователя из <see cref="P:Philomela.Domain.Entities.User.User.UserCredential"/>
+            </summary>
+        </member>
+        <member name="T:Philomela.Domain.Enums.UserRole">
+            <summary>
+                Роли пользователя в системе. 
+            </summary>
+        </member>
+        <member name="T:Philomela.Domain.Exceptions.DomainException">
+            <summary>
+            Исключение слоя Domain.
+            </summary>
+        </member>
+        <member name="M:Philomela.Domain.Exceptions.DomainException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Domain.Exceptions.DomainException"/> class.
+            </summary>
+            <param name="message">Сообщение.</param>
+        </member>
+        <member name="M:Philomela.Domain.Exceptions.DomainException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Domain.Exceptions.DomainException"/> class.
+            </summary>
+            <param name="message">Сообщение.</param>
+            <param name="innerException"><see cref="T:System.Exception"/>.</param>
+        </member>
+        <member name="M:Philomela.Domain.Exceptions.DomainException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Domain.Exceptions.DomainException"/> class.
+            </summary>
+        </member>
+        <member name="T:Philomela.Domain.Extensions.DiExtensions">
+            <summary>
+            Расширения подключения зависимостей.
+            </summary>
+        </member>
+        <member name="M:Philomela.Domain.Extensions.DiExtensions.AddDomainLayer(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение зависимостей Domain.
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+    </members>
+</doc>

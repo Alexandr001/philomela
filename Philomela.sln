@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DEB9ACAA-63EF-4394-8B84-F55CA7E3C05F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Api", "src\Philomela.Api\Philomela.Api.csproj", "{8A083D03-20CC-4B7B-8F58-53D038BB14C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Application", "src\Philomela.Application\Philomela.Application.csproj", "{8D256E96-708C-4F33-AF8C-429CFDB95EEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Domain", "src\Philomela.Domain\Philomela.Domain.csproj", "{42B07A22-C8AD-467C-B729-3D5E6F2493A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Infrastructure", "src\Philomela.Infrastructure\Philomela.Infrastructure.csproj", "{799BAF40-8042-46FA-9EED-FD81BE94CE58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{86F407CD-9937-4ACD-AF63-FC1429BF3348}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitlab-ci.yml = .gitlab-ci.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{714A2F21-8959-4F7E-A2B0-3B8B0DD66D0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Domain.Tests", "tests\Philomela.Domain.Tests\Philomela.Domain.Tests.csproj", "{09B88E9F-D3D7-43B2-8B0C-12EA8F43D25B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Infrastructure.Tests", "tests\Philomela.Infrastructure.Tests\Philomela.Infrastructure.Tests.csproj", "{B7C848A1-AD67-4F51-ADEB-0B97C1D47089}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Application.Tests", "tests\Philomela.Application.Tests\Philomela.Application.Tests.csproj", "{F0B1C0A4-446E-4D0A-9A30-E90FDBF18656}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D256E96-708C-4F33-AF8C-429CFDB95EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D256E96-708C-4F33-AF8C-429CFDB95EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D256E96-708C-4F33-AF8C-429CFDB95EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D256E96-708C-4F33-AF8C-429CFDB95EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B07A22-C8AD-467C-B729-3D5E6F2493A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B07A22-C8AD-467C-B729-3D5E6F2493A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B07A22-C8AD-467C-B729-3D5E6F2493A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B07A22-C8AD-467C-B729-3D5E6F2493A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799BAF40-8042-46FA-9EED-FD81BE94CE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799BAF40-8042-46FA-9EED-FD81BE94CE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799BAF40-8042-46FA-9EED-FD81BE94CE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799BAF40-8042-46FA-9EED-FD81BE94CE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B88E9F-D3D7-43B2-8B0C-12EA8F43D25B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B88E9F-D3D7-43B2-8B0C-12EA8F43D25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B88E9F-D3D7-43B2-8B0C-12EA8F43D25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B88E9F-D3D7-43B2-8B0C-12EA8F43D25B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C848A1-AD67-4F51-ADEB-0B97C1D47089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C848A1-AD67-4F51-ADEB-0B97C1D47089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C848A1-AD67-4F51-ADEB-0B97C1D47089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C848A1-AD67-4F51-ADEB-0B97C1D47089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0B1C0A4-446E-4D0A-9A30-E90FDBF18656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0B1C0A4-446E-4D0A-9A30-E90FDBF18656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0B1C0A4-446E-4D0A-9A30-E90FDBF18656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0B1C0A4-446E-4D0A-9A30-E90FDBF18656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8A083D03-20CC-4B7B-8F58-53D038BB14C3} = {DEB9ACAA-63EF-4394-8B84-F55CA7E3C05F}
+		{8D256E96-708C-4F33-AF8C-429CFDB95EEC} = {DEB9ACAA-63EF-4394-8B84-F55CA7E3C05F}
+		{42B07A22-C8AD-467C-B729-3D5E6F2493A2} = {DEB9ACAA-63EF-4394-8B84-F55CA7E3C05F}
+		{799BAF40-8042-46FA-9EED-FD81BE94CE58} = {DEB9ACAA-63EF-4394-8B84-F55CA7E3C05F}
+		{09B88E9F-D3D7-43B2-8B0C-12EA8F43D25B} = {714A2F21-8959-4F7E-A2B0-3B8B0DD66D0D}
+		{B7C848A1-AD67-4F51-ADEB-0B97C1D47089} = {714A2F21-8959-4F7E-A2B0-3B8B0DD66D0D}
+		{F0B1C0A4-446E-4D0A-9A30-E90FDBF18656} = {714A2F21-8959-4F7E-A2B0-3B8B0DD66D0D}
+		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8} = {86F407CD-9937-4ACD-AF63-FC1429BF3348}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD751846-7D9B-4BDC-AE64-E2FF4A4B4E6B}
+	EndGlobalSection
+EndGlobal

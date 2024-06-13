@@ -1,0 +1,28 @@
+stages:
+  - build
+  - test
+  - docker-build 
+
+build:
+  stage: build
+  script:
+  - echo "Build job"
+  - dotnet build Service.sln
+  artifacts:
+    expire_in: 1 day
+
+test:
+  stage: test
+  script:
+  - echo "Test job"
+  - dotnet test Service.sln
+  artifacts:
+    expire_in: 1 day
+
+docker-build:
+  stage: docker-build
+  script:
+  - echo "Docker build job"
+  - docker-compose build
+  artifacts:
+    expire_in: 1 day

@@ -1,0 +1,461 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Philomela.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Philomela.Application.Abstractions.ILdapProvider">
+            <summary>
+                Менеджер для взаимодействия с LDAP.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.Abstractions.ILdapProvider.GetAllDataAsync``1(System.String,System.Int32)">
+            <summary>
+                Получть все данные по удовлетворяющие условию.
+            </summary>
+            <param name="filter"> Условие <see cref="!:DirectorySearcher.Filter"/>. </param>
+            <param name="pageSize"> Кол-во элементов <see cref="!:DirectorySearcher.PageSize"/>. </param>
+            <typeparam name="T"> Модель в которую дессериализуются данные. </typeparam>
+            <returns> Список моделей. </returns>
+        </member>
+        <member name="T:Philomela.Application.ActionsFilters.ApiKey.ApiKeyAttribute">
+            <summary>
+                Атрибут авторизации по ключу.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.ActionsFilters.ApiKey.ApiKeyAuthorizationFilter">
+            <summary>
+                Фильтр авторизации по ключу.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.ActionsFilters.ApiKey.ApiKeyAuthorizationFilter.OnAuthorization(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)">
+            <summary>
+                Метод авторизации по API Key.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.ActionsFilters.ApiKey.ApiKeyAuthorizationFilter.CheckKey(System.String)">
+            <summary>
+                Метод проверки ключа.
+            </summary>
+            <param name="key"> Ключ для проверки. </param>
+            <returns>TRUE - ключ прошел проверку, FALSE - не прошел. </returns>
+            <exception cref="T:System.InvalidOperationException"> Если в файле конфигурации не указан ключ. </exception>
+        </member>
+        <member name="T:Philomela.Application.Commands.Authentication.V1.Login.LoginCommand">
+            <summary>
+                Команда аутентификации. 
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.Authentication.V1.Login.LoginCommand.Login">
+            <summary>
+                Логин. 
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.Authentication.V1.Login.LoginCommand.Password">
+            <summary>
+                Пароль.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.Authentication.V1.Login.LoginCommand.UserRole">
+            <summary>
+                Роль пользователя.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.Authentication.V1.Login.LoginCommandHandler">
+            <summary>
+                Обработчик для <see cref="T:Philomela.Application.Commands.Authentication.V1.Login.LoginCommand"/>
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.Authentication.V1.Login.LoginCommandResponse">
+            <summary>
+                Модель ответа аутентификации.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.Authentication.V1.Login.LoginCommandResponse.Token">
+            <summary>
+                Токен. 
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.Authentication.V1.Login.LoginCommandValidator">
+            <summary>
+                Валидация <see cref="T:Philomela.Application.Commands.Authentication.V1.Login.LoginCommand"/>. 
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.Calculate.CalculateCommand">
+            <summary>
+                Команда расчета.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.Calculate.CalculateCommand.Expression">
+            <summary>
+                Выражение для преобразования и расчета. 
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.Calculate.CalculateCommandResponse">
+            <summary>
+                Команда ответа для расчета.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.Calculate.CalculateCommandResponse.Result">
+            <summary>
+                Результат расчета выражения.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.Calculate.CalculateCommandResponse.Postfix">
+            <summary>
+                Выражение в постфиксной (обратная польская нотация) форме.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.User.V1.Registration.CreateUserCommand">
+            <summary>
+                Модель создания пользователя. 
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.User.V1.Registration.CreateUserCommand.Id">
+            <summary>
+                Уникальный Id поьзователя.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.User.V1.Registration.CreateUserCommand.Name">
+            <summary>
+                Имя.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Commands.User.V1.Registration.CreateUserCommand.LoginModel">
+            <summary>
+                Данные аутентификации.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.User.V1.Registration.CreateUserCommandHandler">
+            <summary>
+                Обработчик для <see cref="T:Philomela.Application.Commands.User.V1.Registration.CreateUserCommand"/>
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.User.V1.Registration.CreateUserCommandResponse">
+            <summary>
+                Модель ответа.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Commands.User.V1.Registration.CreateUserCommandValidator">
+            <summary>
+                Валидация <see cref="T:Philomela.Application.Commands.User.V1.Registration.CreateUserCommand"/>. 
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.AuthenticationService">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Application.Common.Services.AuthenticationService.GetTokenAsync(Philomela.Application.Commands.Authentication.V1.Login.LoginCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Application.Common.Services.AuthenticationService.CreateJwt(Philomela.Domain.Entities.Authentication.UserCredential)">
+            <summary>
+                Метод создания jwt токена.
+            </summary>
+            <param name="userCredential"> Модель пользователя. </param>
+            <returns> JWT токен. </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.AuthenticationService.VerifyPassword(System.String,System.String)">
+            <summary>
+                Метод проверки пароля.
+            </summary>
+            <param name="password"> Пароль в оригинальном виде. </param>
+            <param name="hashPassword"> Хеш пароля из бд. </param>
+            <returns> true - верный пароль, false - неверный. </returns>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.CalculationService">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Application.Common.Services.CalculationService.GetReversePolishEntry(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Application.Common.Services.CalculationService.CalculateExpression(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Application.Common.Services.CalculationService.GetPriority(System.Char)">
+            <summary>
+                Получить приоритет действий.
+            </summary>
+            <param name="op"> Оператор.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.EmployeeService">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Application.Common.Services.EmployeeService.GetManyEmployeesAsync(Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.EmployeeService.GetValidData(System.Collections.Generic.IEnumerable{Philomela.Application.ProviderEntities.EmployeeLdap})">
+            <summary>
+                Получть существующие записи сотрудников.
+            </summary>
+            <param name="employees"> Все записи из LDAP</param>
+            <returns></returns>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.EmployeeService.SortData(System.Collections.Generic.List{Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse},Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery)">
+            <summary>
+                Сортировка данных.
+            </summary>
+            <param name="employees"> Лист для сортировки. </param>
+            <param name="params"> Параметры для сортировки. </param>
+            <returns> Отсортированный список. </returns>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.Interfaces.IAuthenticationService">
+            <summary>
+                Сервис аутентификации.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.Interfaces.IAuthenticationService.GetTokenAsync(Philomela.Application.Commands.Authentication.V1.Login.LoginCommand,System.Threading.CancellationToken)">
+            <summary>
+                Метод получения токена.
+            </summary>
+            <param name="model"> Модель аутентификации. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+            <returns> JWT токен. </returns>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.Interfaces.ICalculationService">
+            <summary>
+                Сервис вычислений.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.Interfaces.ICalculationService.GetReversePolishEntry(System.String)">
+            <summary>
+                Метод преобразования выражения в обратную польскую запись.
+            </summary>
+            <param name="infix"> Исходное выражение.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.Interfaces.ICalculationService.CalculateExpression(System.String)">
+            <summary>
+                Метод вычисления результата по обратной польской записи.
+            </summary>
+            <param name="postfix"> Обратная польская запись.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.Interfaces.IEmployeeService">
+            <summary>
+                Сервис работы с данными сотрудников.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.Interfaces.IEmployeeService.GetManyEmployeesAsync(Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получение данных всех сотрудников.
+            </summary>
+            <param name="params"> Параметры сортировки. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+            <returns></returns>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.Interfaces.IPhilomelaService">
+            <summary>
+                Сервис филомелы.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.Interfaces.IUserService">
+            <summary>
+                Сервис пользователя.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.Common.Services.Interfaces.IUserService.CreateUserAsync(Philomela.Application.Commands.User.V1.Registration.CreateUserCommand,System.Threading.CancellationToken)">
+            <summary>
+                Метод создания пользователя.
+            </summary>
+            <param name="model"> Модель создания пользователя. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+            <returns></returns>
+        </member>
+        <member name="T:Philomela.Application.Common.Services.PhilomelaService">
+            <inheritdoc />
+        </member>
+        <member name="T:Philomela.Application.Common.Services.UserService">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Application.Common.Services.UserService.CreateUserAsync(Philomela.Application.Commands.User.V1.Registration.CreateUserCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Philomela.Application.Exceptions.AppException">
+            <summary>
+            Исключение слоя Application.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.Exceptions.AppException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Application.Exceptions.AppException"/> class.
+            </summary>
+            <param name="message">Сообщение.</param>
+        </member>
+        <member name="M:Philomela.Application.Exceptions.AppException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Application.Exceptions.AppException"/> class.
+            </summary>
+            <param name="message">Сообщение.</param>
+            <param name="innerException"><see cref="T:System.Exception"/>.</param>
+        </member>
+        <member name="M:Philomela.Application.Exceptions.AppException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Application.Exceptions.AppException"/> class.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Extensions.DiExtensions">
+            <summary>
+                Расширения подключения зависимостей Application.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.Extensions.DiExtensions.AddApplicationLayer(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Подключение зависимостей.
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:Philomela.Application.Extensions.DiExtensions.AddJwtToken(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Добавление настроек JWT токена.
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="configuration"><see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"> Если не найден конфиг токена. </exception>
+        </member>
+        <member name="T:Philomela.Application.Options.JwtOptions">
+            <summary>
+                Параметры для JWT токена.  
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Options.JwtOptions.Issuer">
+            <summary>
+                Создатель токена.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Options.JwtOptions.Audience">
+            <summary>
+                Пользователь.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Options.JwtOptions.Lifetime">
+            <summary>
+                Время жизни.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Options.JwtOptions.Secret">
+            <summary>
+                Секрет. 
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.ProviderEntities.EmployeeLdap">
+            <summary>
+                Сущность сотрудника в Ldap.  
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.ProviderEntities.EmployeeLdap.WhenCreated">
+            <summary>
+                Дата создания УЗ. 
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.ProviderEntities.EmployeeLdap.DisplayName">
+            <summary>
+                ФИО.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.ProviderEntities.EmployeeLdap.Title">
+            <summary>
+                Должность.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.ProviderEntities.EmployeeLdap.SamAccountName">
+            <summary>
+                Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.ProviderEntities.EmployeeLdap.Department">
+            <summary>
+                Отдел.
+            </summary>
+        </member>
+        <member name="M:Philomela.Application.ProviderEntities.EmployeeLdap.Register(Mapster.TypeAdapterConfig)">
+            <summary>
+                Метод конфигруции MAPSTER. 
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:Philomela.Application.Queries.Employee.V1.ManyEmployees.Enums.SortingEmployeesField">
+            <summary>
+                Перечисление для сортировки.
+            </summary>
+        </member>
+        <member name="F:Philomela.Application.Queries.Employee.V1.ManyEmployees.Enums.SortingEmployeesField.None">
+            <summary>
+                По умолчанию
+            </summary>
+        </member>
+        <member name="F:Philomela.Application.Queries.Employee.V1.ManyEmployees.Enums.SortingEmployeesField.Data">
+            <summary>
+                Поле - <see cref="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.WhenCreated"/>
+            </summary>
+        </member>
+        <member name="F:Philomela.Application.Queries.Employee.V1.ManyEmployees.Enums.SortingEmployeesField.Name">
+            <summary>
+                Поле - <see cref="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.DisplayName"/>
+            </summary>
+        </member>
+        <member name="F:Philomela.Application.Queries.Employee.V1.ManyEmployees.Enums.SortingEmployeesField.Login">
+            <summary>
+                Поле - <see cref="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.SamAccountName"/>
+            </summary>
+        </member>
+        <member name="F:Philomela.Application.Queries.Employee.V1.ManyEmployees.Enums.SortingEmployeesField.Department">
+            <summary>
+                Поле - <see cref="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.Department"/>
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse">
+            <summary>
+                Модель сотрудника.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.WhenCreated">
+            <summary>
+                Дата создания УЗ. 
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.DisplayName">
+            <summary>
+                ФИО.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.Title">
+            <summary>
+                Должность.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.SamAccountName">
+            <summary>
+                Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetEmployeeResponse.Department">
+            <summary>
+                Отдел.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery">
+            <summary>
+                Запрос получения данных всех сотрудников.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery.IsDescending">
+            <summary>
+                Сортировка по возрастанию или убыванию.
+            </summary>
+        </member>
+        <member name="P:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery.SortingField">
+            <summary>
+                Фильтр для сортировки.
+            </summary>
+        </member>
+        <member name="T:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQueryHandler">
+            <summary>
+                Обработчик запросов <see cref="T:Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Philomela.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Philomela.Infrastructure.BaseDbContext">
+            <summary>
+                Базовый контекст.
+            </summary>
+        </member>
+        <member name="T:Philomela.Infrastructure.Database.Repositories.AuthenticationRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Database.Repositories.AuthenticationRepository.FindAuthenticationModelByLoginAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Philomela.Infrastructure.Database.Repositories.PhilomelaRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Database.Repositories.PhilomelaRepository.CreatePhilomelaAsync(Philomela.Domain.Entities.Philomela.Philomela,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Philomela.Infrastructure.Database.Repositories.PhilomelaRepository.UpdatePhilomelaAsync(Philomela.Domain.Entities.Philomela.Philomela,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Philomela.Infrastructure.Database.Repositories.PhilomelaRepository.DeletePhilomelsAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Philomela.Infrastructure.Database.Repositories.UserRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Database.Repositories.UserRepository.CreateUserAsync(Philomela.Domain.Entities.User.User,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Database.Repositories.UserRepository.UpdateUserAsync(Philomela.Domain.Entities.User.User,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Database.Repositories.UserRepository.DeleteUserByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Philomela.Infrastructure.Extensions.DiExtensions">
+            <summary>
+            Расширения подключения зависимостей.
+            </summary>
+        </member>
+        <member name="M:Philomela.Infrastructure.Extensions.DiExtensions.AddInfrastructureLayer(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение зависимостей Infrastructure.
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="T:Philomela.Infrastructure.Extensions.MigrateExtension">
+            <summary>
+                Расширение миграций
+            </summary>
+        </member>
+        <member name="M:Philomela.Infrastructure.Extensions.MigrateExtension.UseMigrate(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+                Метод добавления миграций
+            </summary>
+            <param name="builder"> <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>. </param>
+        </member>
+        <member name="T:Philomela.Infrastructure.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Philomela.Infrastructure.Providers.LdapProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Philomela.Infrastructure.Providers.LdapProvider.#ctor(Microsoft.Extensions.Options.IOptions{Philomela.Application.Options.LdapConnection})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Infrastructure.Providers.LdapProvider"/> class.
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Philomela.Infrastructure.Providers.LdapProvider.GetAllDataAsync``1(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

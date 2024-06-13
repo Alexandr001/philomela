@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Philomela.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Philomela.Api.Controllers.V1.AuthenticationController">
+            <summary>
+                Контроллер аутентификации.
+            </summary>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.AuthenticationController.LoginAsync(Philomela.Application.Commands.Authentication.V1.Login.LoginCommand,System.Threading.CancellationToken)">
+            <summary>
+                Метод аутентификации.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Philomela.Api.Controllers.V1.CalculationController">
+            <summary>
+                Контроллер для расчетов.
+            </summary>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.CalculationController.CalculateExpression(Philomela.Application.Commands.Calculate.CalculateCommand,System.Threading.CancellationToken)">
+            <summary>
+                Метод для расчета выражения.
+            </summary>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.EmployeeController.GetManyEmployeesAsync(Philomela.Application.Queries.Employee.V1.ManyEmployees.GetManyEmployeesQuery,System.Threading.CancellationToken)">
+            <summary>
+                Метод получения сотрудников.
+            </summary>
+            <param name="params"> Параметры. </param>
+            <param name="cancellationToken"> Токен отмены. </param>
+            <returns></returns>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.PhilomelaController.GetAllPhilomelsAsync(System.Threading.CancellationToken)">
+            <summary>
+                Получение всех птичек
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.PhilomelaController.GetPhilomelaByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Получение птички по id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.PhilomelaController.CreatePhilomelaAsync(System.Threading.CancellationToken)">
+            <summary>
+                Создание птички
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.PhilomelaController.EditPhilomelaAsync(System.Threading.CancellationToken)">
+            <summary>
+                Изменение параметров птички
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.PhilomelaController.DeletePhilomelaByIdAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Удаление птички по id
+            </summary>
+        </member>
+        <member name="M:Philomela.Api.Controllers.V1.UserController.CreateUserAsync(Philomela.Application.Commands.User.V1.Registration.CreateUserCommand,System.Threading.CancellationToken)">
+            <summary>
+                Создание пользователя.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Philomela.Api.Extensions.DiExtensions">
+            <summary>
+            Расширения подключения зависимостей.
+            </summary>
+        </member>
+        <member name="M:Philomela.Api.Extensions.DiExtensions.RegisterLayers(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение зависимостей по слоям.
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:Philomela.Api.Extensions.DiExtensions.RegisterOptions(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Подключение настроек.
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="configuration"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="T:Philomela.Api.Middlewares.ErrorHandlingMiddleware">
+            <summary>
+            Middleware обработки исключений.
+            </summary>
+        </member>
+        <member name="M:Philomela.Api.Middlewares.ErrorHandlingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{Philomela.Api.Middlewares.ErrorHandlingMiddleware})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Api.Middlewares.ErrorHandlingMiddleware"/> class.
+            </summary>
+            <param name="next"><see cref="T:Microsoft.AspNetCore.Http.RequestDelegate"/>.</param>
+            <param name="logger"><see cref="T:Microsoft.Extensions.Logging.ILogger`1"/>.</param>
+        </member>
+        <member name="M:Philomela.Api.Middlewares.ErrorHandlingMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            InvokeAsync.
+            </summary>
+            <param name="httpContext"><see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:Philomela.Api.Middlewares.ErrorResponse">
+            <summary>
+            Ответ с сообщением об ошибке.
+            </summary>
+        </member>
+        <member name="T:Philomela.Api.Swagger.ConfigureSwaggerOptions">
+            <inheritdoc/>
+        </member>
+        <member name="M:Philomela.Api.Swagger.ConfigureSwaggerOptions.#ctor(Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Philomela.Api.Swagger.ConfigureSwaggerOptions"/> class.
+            </summary>
+            <param name="provider"><see cref="T:Asp.Versioning.ApiExplorer.IApiVersionDescriptionProvider"/>.</param>
+        </member>
+        <member name="M:Philomela.Api.Swagger.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Philomela.Api.Swagger.ConfigureSwaggerOptions.Configure(System.String,Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Philomela.Api.Swagger.SwaggerExtensions">
+            <summary>
+            Расширения для Swagger.
+            </summary>
+        </member>
+        <member name="M:Philomela.Api.Swagger.SwaggerExtensions.AddSwaggerWithVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Подключение Swagger.
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <returns><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</returns>
+        </member>
+        <member name="M:Philomela.Api.Swagger.SwaggerExtensions.UseSwaggerWithVersioning(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+                Подключение Swagger.
+            </summary>
+            <param name="builder"><see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</param>
+            <returns><see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</returns>
+        </member>
+        <member name="M:Philomela.Api.Swagger.SwaggerExtensions.IncludeXmlComments(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+                Подключить комментарии XML документации.
+            </summary>
+            <param name="swaggerGenOptions"><see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions"/>.</param>
+        </member>
+        <member name="M:Philomela.Api.Swagger.SwaggerExtensions.AddAuthorizationJwt(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+                Добавить авторизацию по токену. 
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
