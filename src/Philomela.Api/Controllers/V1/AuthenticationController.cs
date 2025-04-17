@@ -1,7 +1,6 @@
-﻿using Asp.Versioning;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Philomela.Application.Commands.Authentication.V1.Login;
+﻿using Microsoft.AspNetCore.Mvc;
+using Philomela.Api.Models;
+using Philomela.Api.Services.Interfaces;
 
 namespace Philomela.Api.Controllers.V1
 {
@@ -9,15 +8,14 @@ namespace Philomela.Api.Controllers.V1
     ///     Контроллер аутентификации.
     /// </summary>
     [ApiController]
-    [ApiVersion("1")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IAuthenticationService _authenticationService;
 
-        public AuthenticationController(IMediator mediator)
+        public AuthenticationController(IAuthenticationService authenticationService)
         {
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _authenticationService = authenticationService;
         }
 
         /// <summary>
@@ -25,10 +23,19 @@ namespace Philomela.Api.Controllers.V1
         /// </summary>
         /// <returns></returns>
         [HttpPost("login")]
-        public async Task<IActionResult> LoginAsync([FromBody] LoginCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> LoginAsync([FromBody] LoginCommand command,
+            CancellationToken cancellationToken)
         {
-            var send = await _mediator.Send(command, cancellationToken);
-            return Ok(send);
+            string token = await _authenticationService.GetTokenAsync(command, cancellationToken);
+            return Ok(token);
+        }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> LoginAsync([FromBody] string accessToken,
+            CancellationToken cancellationToken)
+        {
+            
+            return Ok();
         }
     }
 }

@@ -9,9 +9,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/Philomela.Api/Philomela.Api.csproj", "src/Philomela.Api/"]
-COPY ["src/Philomela.Application/Philomela.Application.csproj", "src/Philomela.Application/"]
-COPY ["src/Philomela.Domain/Philomela.Domain.csproj", "src/Philomela.Domain/"]
-COPY ["src/Philomela.Infrastructure/Philomela.Infrastructure.csproj", "src/Philomela.Infrastructure/"]
+
+
 RUN dotnet restore "./src/Philomela.Api/./Philomela.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Philomela.Api"

@@ -5,9 +5,6 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Unicode;
-using Philomela.Application.Exceptions;
-using Philomela.Domain.Exceptions;
-
 namespace Philomela.Api.Middlewares
 {
     /// <summary>
@@ -58,8 +55,6 @@ namespace Philomela.Api.Middlewares
             {
                 TimeoutException _ => StatusCodes.Status504GatewayTimeout,
                 AuthenticationException _ => StatusCodes.Status401Unauthorized,
-                AppException _ => StatusCodes.Status400BadRequest,
-                DomainException _ => StatusCodes.Status400BadRequest,
                 _ => StatusCodes.Status500InternalServerError,
             };
 
