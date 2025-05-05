@@ -14,7 +14,7 @@ builder.Services.AddLogging();
 
 // Add services to the container.
 builder.Services.AddCors();
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddJwtToken(builder.Configuration);
 builder.Services.RegisterLayers();
@@ -22,26 +22,24 @@ builder.Services.RegisterLayers();
 builder.Services.AddSwaggerGen();
 
 WebApplication app = builder.Build();
+await app.UseMigrate();
 
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseHsts();
 app.UseHttpsRedirection();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-await app.UseMigrate();
+app.UseStaticFiles();
 
 app.UseRouting();
+app.MapControllers();
+
+app.UseMiddleware<TokenMiddleware>();
 
 app.UseCors(cpb => cpb.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapControllers();
+
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}");
 
 await app.RunAsync();

@@ -6,9 +6,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Philomela.Api.Db;
 using Philomela.Api.Models;
+using Philomela.Api.Options;
 using Philomela.Api.Services.Interfaces;
-using Philomela.Application.Options;
-using Philomela.Domain.Entities.Authentication;
 
 namespace Philomela.Api.Services
 {
@@ -17,16 +16,19 @@ namespace Philomela.Api.Services
     {
         private readonly IAuthenticationRepository _authenticationRepository;
         private readonly IOptions<JwtOptions> _jwtOptions;
+        private readonly IOptions<JwtRefreshOptions> _jwtRefreshOptions;
 
-        public AuthenticationService(IAuthenticationRepository authenticationRepository, IOptions<JwtOptions> jwtOptions)
+        public AuthenticationService(IAuthenticationRepository authenticationRepository, IOptions<JwtOptions> jwtOptions, IOptions<JwtRefreshOptions> jwtRefreshOptions)
         {
             _authenticationRepository = authenticationRepository;
             _jwtOptions = jwtOptions;
+            _jwtRefreshOptions = jwtRefreshOptions;
         }
 
         /// <inheritdoc />
-        public async Task<string> GetTokenAsync(LoginCommand model, CancellationToken cancellationToken = default)
+        public async Task<RefreshResponce> GetTokenAsync(LoginCommand model, CancellationToken cancellationToken = default)
         {
+            Console.WriteLine(UserCredential.GetHashSha256(model.Password));
             UserCredential? userCredential =
                 await _authenticationRepository.FindAuthenticationModelByLoginAsync(model.Login, cancellationToken);
             if (userCredential is null || VerifyPassword(model.Password, userCredential.Password) == false)
@@ -35,7 +37,34 @@ namespace Philomela.Api.Services
             }
 
             string jwt = CreateJwt(userCredential);
-            return jwt;
+            string jwtRefresh = CreateRefreshJwt();
+
+            await _authenticationRepository.CreateOrUpdateRefreshAsync(userCredential.Login, jwtRefresh, cancellationToken);
+            return new RefreshResponce
+            {
+                AccessToken = jwt,
+                RefreshToken = jwtRefresh
+            };
+        }
+
+        /// <inheritdoc />
+        public async Task<RefreshResponce> RefreshTokenAsync(
+            string access, 
+            string oldRefresh,
+            string login,
+            CancellationToken cancellationToken = default)
+        {
+            string newRefresh = CreateRefreshJwt();
+            string newAccess = CreateJwt(new UserCredential{Login = login, UserRole = UserRole.USER});
+            
+            bool isSuccess = await _authenticationRepository.UpdateRefreshAsync(login, oldRefresh, newRefresh, cancellationToken);
+            if (!isSuccess)
+            {
+                throw new AuthenticationException("Не удалось обновить токены.");
+            }
+
+            return new RefreshResponce { AccessToken = newAccess, RefreshToken = newRefresh };
+
         }
 
         /// <summary>
@@ -46,11 +75,11 @@ namespace Philomela.Api.Services
         /// <exception cref="ArgumentNullException"></exception>
         private string CreateJwt(UserCredential userCredential)
         {
-            List<Claim> claims = new()  
-            {
-                new Claim(ClaimTypes.Name, userCredential.Login),
-                new Claim(ClaimTypes.Role, userCredential.UserRole.ToString()),
-            };
+            List<Claim> claims =
+            [
+                new(ClaimTypes.Name, userCredential.Login),
+                new(ClaimTypes.Role, userCredential.UserRole.ToString())
+            ];
             SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_jwtOptions.Value.Secret));
             SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -59,6 +88,27 @@ namespace Philomela.Api.Services
                 audience: _jwtOptions.Value.Audience,
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(_jwtOptions.Value.Lifetime),
+                signingCredentials: signingCredentials);
+
+            string token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+            return token;
+        }
+        
+        /// <summary>
+        ///     Метод создания jwt токена.
+        /// </summary>
+        /// <param name="userCredential"> Модель пользователя. </param>
+        /// <returns> JWT токен. </returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        private string CreateRefreshJwt()
+        {
+            SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(_jwtRefreshOptions.Value.Secret));
+            SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
+
+            JwtSecurityToken tokenOptions = new(
+                issuer: _jwtRefreshOptions.Value.Issuer,
+                audience: _jwtRefreshOptions.Value.Audience,
+                expires: DateTime.Now.AddHours(_jwtRefreshOptions.Value.LifetimeHour),
                 signingCredentials: signingCredentials);
 
             string token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);

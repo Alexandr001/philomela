@@ -26,6 +26,12 @@ namespace Philomela.Api.Db
         ///     Роль пользователя.
         /// </summary>
         public UserRole UserRole { get; set; } = UserRole.USER;
+        
+        /// <summary>
+        ///     Токен обновления.
+        /// </summary>
+        [PasswordPropertyText]
+        public string? RefreshToken { get; set; }
 
         /// <summary>
         ///     Метод хеширования пароля.

@@ -13,6 +13,20 @@ namespace Philomela.Api.Services.Interfaces
         /// <param name="model"> Модель аутентификации. </param>
         /// <param name="cancellationToken"> Токен отмены. </param>
         /// <returns> JWT токен. </returns>
-        public Task<string> GetTokenAsync(LoginCommand model, CancellationToken cancellationToken = default);
+        public Task<RefreshResponce> GetTokenAsync(LoginCommand model, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        ///     Метод обновления токенов.
+        /// </summary>
+        /// <param name="access"></param>
+        /// <param name="oldRefresh"></param>
+        /// <param name="login"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public Task<RefreshResponce> RefreshTokenAsync(
+            string access,
+            string oldRefresh,
+            string login,
+            CancellationToken cancellationToken = default);
     }
 }

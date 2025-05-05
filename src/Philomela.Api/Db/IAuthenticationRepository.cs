@@ -1,6 +1,4 @@
-﻿using Philomela.Api.Db;
-
-namespace Philomela.Domain.Entities.Authentication
+﻿namespace Philomela.Api.Db
 {
     /// <summary>
     ///     Репозиторий аутентификации.
@@ -14,5 +12,16 @@ namespace Philomela.Domain.Entities.Authentication
         /// <param name="cancellationToken"> Токен отмены. </param>
         /// <returns></returns>
         public Task<UserCredential?> FindAuthenticationModelByLoginAsync(string login, CancellationToken cancellationToken = default);
+        
+        public Task CreateOrUpdateRefreshAsync(
+            string login, 
+            string refreshToken, 
+            CancellationToken cancellationToken);
+
+        public Task<bool> UpdateRefreshAsync(
+            string login, 
+            string oldRefresh, 
+            string newRefresh,
+            CancellationToken cancellationToken);
     }
 }

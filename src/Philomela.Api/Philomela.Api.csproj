@@ -10,6 +10,7 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+    <UserSecretsId>43cb2e31-6a69-41da-b348-e7cba8ccccc8</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -38,6 +40,17 @@
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Views\Admin.cshtml" />
+    <AdditionalFiles Include="Views\Error.cshtml" />
+    <AdditionalFiles Include="Views\Index.cshtml" />
+    <AdditionalFiles Include="Views\Privacy.cshtml" />
+    <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />
+    <AdditionalFiles Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <AdditionalFiles Include="Views\_ViewImports.cshtml" />
+    <AdditionalFiles Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
 
 </Project>

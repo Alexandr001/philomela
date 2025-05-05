@@ -2,10 +2,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Philomela.Api.Db;
+using Philomela.Api.Options;
 using Philomela.Api.Services;
 using Philomela.Api.Services.Interfaces;
-using Philomela.Application.Options;
-using Philomela.Domain.Entities.Authentication;
 
 namespace Philomela.Api.Extensions
 {
@@ -36,6 +35,7 @@ namespace Philomela.Api.Extensions
         public static IServiceCollection RegisterOptions(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JwtOptions>(configuration.GetSection("Jwt"));
+            services.Configure<JwtRefreshOptions>(configuration.GetSection("JwtRefresh"));
             
             return services;
         }
@@ -61,8 +61,8 @@ namespace Philomela.Api.Extensions
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = jwtOptions.Issuer,

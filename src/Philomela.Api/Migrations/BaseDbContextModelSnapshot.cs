@@ -30,12 +30,23 @@ namespace Philomela.Api.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("text");
+
                     b.Property<int>("UserRole")
                         .HasColumnType("integer");
 
                     b.HasKey("Login");
 
                     b.ToTable("UserCredential");
+
+                    b.HasData(
+                        new
+                        {
+                            Login = "admin",
+                            Password = "8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918",
+                            UserRole = 0
+                        });
                 });
 #pragma warning restore 612, 618
         }

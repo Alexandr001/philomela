@@ -1,9 +1,6 @@
 ﻿namespace Philomela.Api.Options
 {
-    /// <summary>
-    ///     Параметры для JWT токена.  
-    /// </summary>
-    public class JwtOptions
+    public class JwtRefreshOptions
     {
         /// <summary>
         ///     Создатель токена.
@@ -18,7 +15,7 @@
         /// <summary>
         ///     Время жизни.
         /// </summary>
-        public int Lifetime { get; set; }
+        public int LifetimeHour { get; set; }
 
         /// <summary>
         ///     Секрет. 
