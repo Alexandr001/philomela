@@ -10,7 +10,6 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/Philomela.Api/Philomela.Api.csproj", "src/Philomela.Api/"]
 
-
 RUN dotnet restore "./src/Philomela.Api/./Philomela.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Philomela.Api"

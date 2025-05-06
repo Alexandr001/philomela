@@ -1,12 +1,28 @@
-version: '3.4'
+version: "2.29.2"
 
 services:
-  philomela.api:
-    image: ${DOCKER_REGISTRY-}philomela.api:1.0
-    build:
-      context: .
-      dockerfile: src/Philomela.Api/Dockerfile
+  db:
+    image: postgres:16.4-alpine
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    restart: always
     ports:
-      - "80:8080"
+      - "127.0.0.1:5432:5432"
+    #-------------server----------------
+  app:
+    depends_on:
+      - db
+    build:
+      context: ./src/Philomela.Api/
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:5000
+    image: app:latest
+    volumes:
+      - ./Admin/wwwroot:/app/wwwroot
+volumes:
+  db:
