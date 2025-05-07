@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DEB9ACAA-63EF-4394-8B84-F55CA7E3C05F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Philomela.Api", "src\Philomela.Api\Philomela.Api.csproj", "{8A083D03-20CC-4B7B-8F58-53D038BB14C3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{86F407CD-9937-4ACD-AF63-FC1429BF3348}"
 	ProjectSection(SolutionItems) = preProject
 		.gitlab-ci.yml = .gitlab-ci.yml
@@ -14,26 +10,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{6938F83E-BBDF-4473-931C-BB7B5BD3B6FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A083D03-20CC-4B7B-8F58-53D038BB14C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6938F83E-BBDF-4473-931C-BB7B5BD3B6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6938F83E-BBDF-4473-931C-BB7B5BD3B6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6938F83E-BBDF-4473-931C-BB7B5BD3B6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6938F83E-BBDF-4473-931C-BB7B5BD3B6FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8A083D03-20CC-4B7B-8F58-53D038BB14C3} = {DEB9ACAA-63EF-4394-8B84-F55CA7E3C05F}
 		{C018E688-0A5B-4D89-9A6D-FE9C9950DAA8} = {86F407CD-9937-4ACD-AF63-FC1429BF3348}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

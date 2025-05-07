@@ -1,5 +1,3 @@
-version: "2.29.2"
-
 services:
   db:
     image: postgres:16.4-alpine
@@ -10,19 +8,21 @@ services:
       - db:/var/lib/postgresql/data
     restart: always
     ports:
-      - "127.0.0.1:5432:5432"
+      - "5432:5432"
     #-------------server----------------
   app:
     depends_on:
       - db
     build:
-      context: ./src/Philomela.Api/
+      context: ./
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:5000
     image: app:latest
+    ports:
+      - "5000:5000"
     volumes:
-      - ./Admin/wwwroot:/app/wwwroot
+      - ./App/wwwroot:/app/wwwroot
 volumes:
   db:
