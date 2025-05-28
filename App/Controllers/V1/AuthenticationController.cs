@@ -18,6 +18,7 @@ namespace App.Controllers.V1
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IAuthenticationRepository _repository;
+        private readonly ILogger<AuthenticationController> _logger;
         private readonly JwtOptions _jwtOptions;
         private readonly JwtRefreshOptions _jwtRefreshOptions;
 
@@ -25,10 +26,12 @@ namespace App.Controllers.V1
             IAuthenticationService authenticationService,
             IAuthenticationRepository repository, 
             IOptions<JwtRefreshOptions> jwtRefreshOptions,
-            IOptions<JwtOptions> jwtOptions)
+            IOptions<JwtOptions> jwtOptions,
+            ILogger<AuthenticationController> logger)
         {
             _authenticationService = authenticationService;
             _repository = repository;
+            _logger = logger;
             _jwtOptions = jwtOptions.Value;
             _jwtRefreshOptions = jwtRefreshOptions.Value;
         }
@@ -58,6 +61,7 @@ namespace App.Controllers.V1
 
             if (accessJwtToken == null || refreshJwtToken == null)
             {
+                _logger.LogError("Access or refresh token is invalid. User = {0}", model.Login);
                 return Unauthorized("Не валидный токен доступа или токен обновления.");
             }
 

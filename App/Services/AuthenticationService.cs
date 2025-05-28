@@ -17,12 +17,14 @@ namespace App.Services
         private readonly IAuthenticationRepository _authenticationRepository;
         private readonly IOptions<JwtOptions> _jwtOptions;
         private readonly IOptions<JwtRefreshOptions> _jwtRefreshOptions;
+        private readonly ILogger<AuthenticationService> _logger;
 
-        public AuthenticationService(IAuthenticationRepository authenticationRepository, IOptions<JwtOptions> jwtOptions, IOptions<JwtRefreshOptions> jwtRefreshOptions)
+        public AuthenticationService(IAuthenticationRepository authenticationRepository, IOptions<JwtOptions> jwtOptions, IOptions<JwtRefreshOptions> jwtRefreshOptions, ILogger<AuthenticationService> logger)
         {
             _authenticationRepository = authenticationRepository;
             _jwtOptions = jwtOptions;
             _jwtRefreshOptions = jwtRefreshOptions;
+            _logger = logger;
         }
 
         /// <inheritdoc />
@@ -33,6 +35,7 @@ namespace App.Services
                 await _authenticationRepository.FindAuthenticationModelByLoginAsync(model.Login, cancellationToken);
             if (userCredential is null || VerifyPassword(model.Password, userCredential.Password) == false)
             {
+                _logger.LogError("Ivalid username or password. UserName = {0}. Password = {1}", model.Login, model.Password);
                 throw new AuthenticationException("Неверное имя пользователя или пароль!");
             }
 
@@ -60,6 +63,7 @@ namespace App.Services
             bool isSuccess = await _authenticationRepository.UpdateRefreshAsync(login, oldRefresh, newRefresh, cancellationToken);
             if (!isSuccess)
             {
+                _logger.LogError("Not update tokens. User = {0}", login);
                 throw new AuthenticationException("Не удалось обновить токены.");
             }
 
