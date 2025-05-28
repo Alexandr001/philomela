@@ -6,6 +6,32 @@
 const form = document.getElementById('login-form');
 const button = document.getElementById('refr-button');
 
+const tokenRefreshInterval = setInterval(refreshFunc, 1000 * 60);
+
+// Останавливаем интервал при выходе из системы
+window.addEventListener('beforeunload', () => {
+    clearInterval(tokenRefreshInterval);
+});
+
+let refreshFunc = () => {
+    fetch('api/Authentication/refresh', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({login: "admin"})
+    })
+        .then(r => {
+            if (r.ok === false) {
+                alert('Не удалось обновить токены.')
+                window.location.replace("/")
+            }
+        })
+        .catch(err => {
+            alert('Не удалось выполнить авторизацию!');
+            window.location.replace("/");
+        })
+}
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -33,37 +59,9 @@ form.addEventListener('submit', e => {
         .catch(err => {
             alert('Не удалось выполнить авторизацию!')
         })
-})
-
-let refreshFunc = () => {
-    fetch('api/Authentication/refresh', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify({login: "admin"})
-    })
-        .then(r => {
-            if (r.ok) {
-                window.location.replace('/privacy')
-            } else {
-                alert('Не удалось обновить токены.')
-            }
-        })
-        .catch(err => {
-            alert('Не удалось выполнить авторизацию!')
-        })
-}
+});
 
 button.addEventListener("click", e => {
     e.preventDefault();
     refreshFunc();
 })
-
-// Запускаем обновление токена каждые 5 секунд
-const tokenRefreshInterval = setInterval(refreshFunc, 1000 * 60);
-
-// Останавливаем интервал при выходе из системы
-window.addEventListener('beforeunload', () => {
-    clearInterval(tokenRefreshInterval);
-});
