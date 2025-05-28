@@ -5,7 +5,8 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Certificate__Password": "password"
       },
       "applicationUrl": "http://localhost:5159;https://localhost:51590",
       "dotnetRunMessages": true

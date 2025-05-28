@@ -29,13 +29,14 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+    <ItemGroup>
+        <Content Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Include="https\certificate.pfx" />
     <AdditionalFiles Include="Views\Admin.cshtml" />
     <AdditionalFiles Include="Views\Error.cshtml" />
     <AdditionalFiles Include="Views\Index.cshtml" />
