@@ -35,9 +35,7 @@ form.addEventListener('submit', e => {
         })
 })
 
-button.addEventListener("click", e => {
-    e.preventDefault();
-
+let refreshFunc = () => {
     fetch('api/Authentication/refresh', {
         method: 'POST',
         headers: {
@@ -55,4 +53,17 @@ button.addEventListener("click", e => {
         .catch(err => {
             alert('Не удалось выполнить авторизацию!')
         })
+}
+
+button.addEventListener("click", e => {
+    e.preventDefault();
+    refreshFunc();
 })
+
+// Запускаем обновление токена каждые 5 секунд
+const tokenRefreshInterval = setInterval(refreshFunc, 1000 * 60);
+
+// Останавливаем интервал при выходе из системы
+window.addEventListener('beforeunload', () => {
+    clearInterval(tokenRefreshInterval);
+});
