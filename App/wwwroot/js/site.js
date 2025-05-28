@@ -6,13 +6,6 @@
 const form = document.getElementById('login-form');
 const button = document.getElementById('refr-button');
 
-const tokenRefreshInterval = setInterval(refreshFunc, 1000 * 60);
-
-// Останавливаем интервал при выходе из системы
-window.addEventListener('beforeunload', () => {
-    clearInterval(tokenRefreshInterval);
-});
-
 let refreshFunc = () => {
     fetch('api/Authentication/refresh', {
         method: 'POST',
@@ -32,6 +25,13 @@ let refreshFunc = () => {
             window.location.replace("/");
         })
 }
+
+const tokenRefreshInterval = setInterval(refreshFunc, 1000 * 60);
+// Останавливаем интервал при выходе из системы
+
+window.addEventListener('beforeunload', () => {
+    clearInterval(tokenRefreshInterval);
+});
 
 form.addEventListener('submit', e => {
     e.preventDefault();
